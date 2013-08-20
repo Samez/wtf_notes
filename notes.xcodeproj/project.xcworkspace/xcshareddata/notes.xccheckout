@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FE2F51AA-6736-4AC3-B985-0E56460BF53D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>notes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EE10F361-1A39-4555-BEAD-0B1237FF61B3</key>
+		<string>https://github.com/Samez/Notes.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>notes/notes.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EE10F361-1A39-4555-BEAD-0B1237FF61B3</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Samez/Notes.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EE10F361-1A39-4555-BEAD-0B1237FF61B3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EE10F361-1A39-4555-BEAD-0B1237FF61B3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Notes</string>
+		</dict>
+	</array>
+</dict>
+</plist>

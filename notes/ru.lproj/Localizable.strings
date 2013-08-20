@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  notes
+
+  Created by Samez on 08.04.13.
+  Copyright (c) 2013 gg. All rights reserved.
+*/
+
+"NotesTitle" = "Заметки";
+"EditNote" = "";
+"NewNote" = "Новая";
+"CancelButton" = "Отмена";
+"DeleteButton" = "Удалить";
+"SaveButton" = "Сохранить";
+"PrivateNoteRequirements" = "Введите название и текст";
+"PublicNoteRequirements" = "Заметка пуста!";
+"OptionsTitle" = "Опции";
+"ChangePasswordCell" = "Изменить пароль";
+"IncorrectOldPasswordWarning" = "Старый пароль введен неверно!";
+"PasswordsAreNotEqualWarning" = "Пароли не совпадают!";
+"TooShortPasswordWarning" = "Вы ввели слишком короткий пароль! Пароль не может быть короче 4 символов.";
+"StandartPasswordWarning" = "Вы используете стандартный пароль - 'Password'. Для обеспечения безопасности введите новый пароль. Пароль не может быть короче 4 символов";
+"PasswordWasChangeNotification" = "Пароль успешно изменен!";
+"EnterOldPasswordLabel" = "Введите старый пароль";
+"EnterNewPasswordLabel" = "Введите новый пароль";
+"RepeatNewPasswordLabel" = "Введите новый пароль повторно";
+"PreferenceCell" = "Предпочтения";
+"SimpleTabBarStyleCell" = "Упрощенная панель";
+"HidePasswordCell" = "Скрывать пароль";
+"EditButton" = "Изменить";
+"DoneButton" = "Готово";
+"WrongPasswordAlert" = "Неверный пароль\n\n\n";
+"PasswordCheckAlertViewTitle" = "Подтвердите удаление";
+"EnterPasswordToDeleteTitle" = "Введите пароль\n\n\n";
+"unsafeDetetionCell" = "Удаление жестом";
+
+
+"PasswordRequestIntervalCell" = "Запоминать пароль";
+"RIEveryTime" = "Никогда";
+"RTForOneSession" = "Сессия";
+"RI1min" = "1 мин.";
+"RI5min" = "5 мин.";
+"RI10min" = "10 мин.";
+"RI30min" = "30 мин.";
+"FontLabel" = "Шрифты";
+"FontSizeCellLabel" = "Размер";
+
+"returnPasswordCell" = "Сбросить пароль";
+"ReturnPasswordTextWarning" = "Внимание! Если вы хотите сбросить пароль, то нажмите на кнопку 'Сбросить'. Через 12 часов пароль сбросится на стандартный. Сброс пароля аннулируется если вы смените пароль.";
+"ResetButton" = "Сбросить";
+"ResetPasswordActive" = "Сброс пароля активирован. Сброс пароля аннулируется если вы смените пароль.";
+"countdonwTimerTimeLeftLabel" = "Осталось ";
+"resetPasswordControllerTitle" = "Сброс";
+"passwordIsAllreadyDefault" = "Незачем сбрасывать стандартный пароль. Вернитесь если забудете свой пароль";
+"passwordWasReseted" = "Пароль успешно сброшен!";
+"addFirstNoteText" = "Создай первую заметку!";

@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  notes
+
+  Created by Samez on 08.04.13.
+  Copyright (c) 2013 gg. All rights reserved.
+*/
+
+"NotesTitle" = "Notes";
+"EditNote" = "Edit";
+"NewNote" = "New";
+"CancelButton" = "Cancel";
+"DeleteButton" = "Delete";
+"SaveButton" = "Save";
+"PrivateNoteRequirements" = "Enter a title and text";
+"PublicNoteRequirements" = "Enter a title or text";
+"OptionsTitle" = "Options";
+"ChangePasswordCell" = "Change password";
+"IncorrectOldPasswordWarning" = "Old password is incorrect!";
+"PasswordsAreNotEqualWarning" = "Passwords do not match!";
+"TooShortPasswordWarning" = "The password entered is too short! It can not be shorter than 4 characters.";
+"StandartPasswordWarning" = "You are using the default password - 'Password'. For security, enter the new password. The password can not be shorter than 4 characters";
+"PasswordWasChangeNotification" = "The password was successfully changed!";
+"EnterOldPasswordLabel" = "Enter your old password";
+"EnterNewPasswordLabel" = "Enter the new password";
+"RepeatNewPasswordLabel" = "Enter the new password again";
+"PreferenceCell" = "Preferences";
+"SimpleTabBarStyleCell" = "Simplified panel";
+"HidePasswordCell" = "Hide password";
+"EditButton" = "Edit";
+"DoneButton" = "Done";
+"WrongPasswordAlert" = "Wrong password\n\n\n";
+"PasswordCheckAlertViewTitle" = "Сonfirm the deletion";
+"EnterPasswordToDeleteTitle" = "Enter password\n\n\n";
+"unsafeDetetionCell" = "Unsafe removal";
+"FontLabel" = "Fonts";
+"FontSizeCellLabel" = "Size";
+
+"returnPasswordCell" = "Reset password";
+"addFirstNoteText" = "Add your first note!";
+
+"ReturnPasswordTextWarning" = "Attention! If you want to reset the password, then click on the 'Reset'. After 12 hours, the password will be reset to default. Password Reset will be canceled if you change your password.";
+"ResetButton" = "Reset";
+"ResetPasswordActive" = "Password Reset is activated. Password Reset is canceled if you change your password.";
+"countdonwTimerTimeLeftLabel" = "Left ";
+"resetPasswordControllerTitle" = "Reset";
+"passwordIsAllreadyDefault" = "There is no need to reset the default password. Come back if you forget your password.";
+"passwordWasReseted" = "Password reset successfully!";
+
+"PasswordRequestIntervalCell" = "Save password";
+"RIEveryTime" = "Never";
+"RTForOneSession" = "One session";
+"RI1min" = "1 min.";
+"RI5min" = "5 min.";
+"RI10min" = "10 min.";
+"RI30min" = "30 min.";
