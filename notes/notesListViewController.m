@@ -751,23 +751,24 @@
                          }
                      }
                      completion:^(BOOL finished){
+                         
+                         testAddViewController *nextC = [[testAddViewController alloc] init];
+                         [nextC setNote:note];
+                         [nextC setForEditing:YES];
+                         [nextC setManagedObjectContext:managedObjectContext];
+                         [nextC setNLC:self];
+                         
+                         [self removeButtons];
+                         
+                         [UIView transitionFromView:self.view
+                                             toView:nextC.view
+                                           duration:0.8
+                                            options:UIViewAnimationOptionTransitionCurlUp
+                                         completion:nil];
+                         
+                         [self.navigationController pushViewController:nextC animated:NO];
+                         
                      }];
-    
-    testAddViewController *nextC = [[testAddViewController alloc] init];
-    [nextC setNote:note];
-    [nextC setForEditing:YES];
-    [nextC setManagedObjectContext:managedObjectContext];
-    [nextC setNLC:self];
-    
-    [self removeButtons];
-    
-    [UIView transitionFromView:self.view
-                        toView:nextC.view
-                      duration:0.8
-                       options:UIViewAnimationOptionTransitionCurlUp
-                    completion:nil];
-    
-    [self.navigationController pushViewController:nextC animated:NO];
 }
 
 //Попытка открыть приватную заметку после ввода пароля
