@@ -129,9 +129,7 @@
     [self setupButtons];
     
     self.navigationItem.hidesBackButton = YES;
-    
-    
-    
+
     [[[self navigationController]navigationBar] setBarStyle:UIBarStyleBlack];
     
     UIImageView *backgroundImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"woodenBackground.png"]];

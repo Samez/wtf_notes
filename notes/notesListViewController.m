@@ -132,6 +132,14 @@
 -(void)setNavigationItemTitleView
 {
     [[self navigationItem] setTitleView:searchView];
+    
+    self.navigationItem.titleView = searchView;
+    [searchView setAlpha:0.0];
+    [UIView animateWithDuration:0.2 delay:0.1 options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [searchView setAlpha:1.0];
+                     }
+                     completion:^(BOOL finished){}];
 }
 
 //Включение реакции на жесты: свайп влево, свайп вправо
@@ -242,7 +250,7 @@
     }
     
     [self performSelector:@selector(setButtons) withObject:nil afterDelay:delay];
-    delay+=0.1;
+//    delay+=0.1;
     [self performSelector:@selector(setNavigationItemTitleView) withObject:nil afterDelay:delay];
     
 //    [self performSelector:@selector(setAddFirstNoteView) withObject:nil afterDelay:delay];
@@ -251,13 +259,6 @@
 }
 
 #pragma mark - View disappear/unload
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    [self.navigationItem setRightBarButtonItem:nil animated:YES];
-    [self.navigationItem setTitleView:nil];
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -274,10 +275,12 @@
     }
     
     if ([searchView searchingNow])
+    {
         [searchView buttonClick];
+    }
     
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    [self.navigationItem setRightBarButtonItem:nil animated:YES];
+    [self.navigationItem setTitleView:nil];
+    [self removeButtons];
 }
 
 - (void)viewDidUnload
@@ -1129,7 +1132,7 @@
 			break;
 			
 		case NSFetchedResultsChangeDelete:
-			[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationRight];
 			break;
 	}
 }
@@ -1150,10 +1153,14 @@
 			
 		case NSFetchedResultsChangeDelete:
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
-            if (([[fetchedResultsController fetchedObjects] count] == 0) && ([myPredicate length] == 0))
+            if ([[fetchedResultsController fetchedObjects] count] == 0)
             {
                 [self.tableView setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
+                
+                if ([myPredicate length] == 0)
+                {
 //                    [self setAddFirstNoteView];
+                }
             }
 			break;
 			

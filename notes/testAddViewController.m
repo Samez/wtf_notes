@@ -178,11 +178,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (forEditing)
-    {
-        self.navigationItem.titleView = trashButton;
-    }
-    
     [self updateMyTextViewWithDuration:0.0];
     [self updateBackViewWithDuration:0.0];
     [self updateTimeTextWithDuration:0.0];
@@ -196,6 +191,19 @@
 {    
     [[LocalyticsSession shared] tagScreen:@"New note / edit note"];
     [self setButtons];
+    
+    if (forEditing)
+    {
+        self.navigationItem.titleView = trashButton;
+        [trashButton setAlpha:0.0];
+        [UIView animateWithDuration:0.2 delay:0.1 options: UIViewAnimationCurveEaseOut
+                         animations:^{
+                             [trashButton setAlpha:1.0];
+                         }
+                         completion:^(BOOL finished){}];
+    }
+//    if (!forEditing)
+//        [[self navigationItem] setTitle:NSLocalizedString(@"NewNote", nil)];
 }
 
 - (void)viewDidLoad
@@ -203,6 +211,7 @@
     [super viewDidLoad];
     
     [self.view setAutoresizesSubviews:YES];
+    self.navigationItem.hidesBackButton = YES;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
@@ -227,7 +236,7 @@
     {
         note = (Note*)[NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:[self managedObjectContext]];
         
-        [[self navigationItem] setTitle:NSLocalizedString(@"NewNote", nil)];
+//        [[self navigationItem] setTitle:NSLocalizedString(@"NewNote", nil)];
     }
     
     [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlack];
@@ -556,7 +565,6 @@
     [self setMyNameField:nil];
     [self setTimeText:nil];
     [self setLockButton:nil];
-    
     [self setBackView:nil];
     [super viewDidUnload];
 }
