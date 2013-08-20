@@ -29,8 +29,6 @@
     NSString *myPredicate; //Searching
     NSMutableArray *swipedCells; //Массив с выделенными ячейками
     UIColor *swipeColor;
-//    UIView *addFirstNoteView; //Вьюшка со стрелочкой
-//    UILabel *addFirstNoteLabel; //Лейбл с надписью возле стрелочки
     
     BOOL unsafeDeletion;
     BOOL canSwipe;

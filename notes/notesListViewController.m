@@ -172,31 +172,7 @@
     UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
     [footerView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"whiteBoard.png"]]];
     self.tableView.tableFooterView = footerView;
-    
-    /*
-    addFirstNoteView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 320, 100, 320, 140)];
-    [addFirstNoteView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"arrow.png"]]];
-    [addFirstNoteView setAlpha:0.0];
-    
-    [self.view addSubview:addFirstNoteView];
-    
-    addFirstNoteLabel = [[UILabel alloc] init];
-    [addFirstNoteLabel setText:NSLocalizedString(@"addFirstNoteText", nil)];
-    
-    [addFirstNoteLabel setTextAlignment:NSTextAlignmentRight];
-    [addFirstNoteLabel setBackgroundColor:[UIColor clearColor]];
-    
-    UIFont *helvFont = [UIFont fontWithName:@"Noteworthy-Light" size:16.0];
-    
-    [addFirstNoteLabel setFont:helvFont];
-    
-    CGRect labelRect = CGRectMake(self.view.frame.size.width - 320, 155, 190, 30);
-    addFirstNoteLabel.frame = labelRect;
-    
-    [addFirstNoteLabel setAlpha:0.0];
-    
-    [self.view addSubview:addFirstNoteLabel];
-    */
+
     [[[self navigationController] navigationBar] setBarStyle:UIBarStyleBlack];
     
     NSError *error = nil;
@@ -219,10 +195,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [[self tableView] reloadData];
-        
-    canShowAddFirstNoteView = YES;
     
-    [self loadSettings]; 
+    [self loadSettings];
     
     canTryToEnter = YES;
     canSwipe = YES;
@@ -234,7 +208,10 @@
         [self.tableView setSeparatorStyle:(UITableViewCellSeparatorStyleSingleLine)];
     
     if (!returnedFromOptions)
+    {
         [self setButtons];
+        [[self navigationItem] setTitleView:searchView];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -247,13 +224,12 @@
     {
         delay = 0.8;
         returnedFromOptions = NO;
+        [self performSelector:@selector(setNavigationItemTitleView) withObject:nil afterDelay:delay];
     }
     
     [self performSelector:@selector(setButtons) withObject:nil afterDelay:delay];
-//    delay+=0.1;
-    [self performSelector:@selector(setNavigationItemTitleView) withObject:nil afterDelay:delay];
+
     
-//    [self performSelector:@selector(setAddFirstNoteView) withObject:nil afterDelay:delay];
     
     [[LocalyticsSession shared] tagScreen:@"Notes list"];
 }
@@ -279,14 +255,18 @@
         [searchView buttonClick];
     }
     
-    [self.navigationItem setTitleView:nil];
+   
     [self removeButtons];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.navigationItem setTitleView:nil];
 }
 
 - (void)viewDidUnload
 {
     [self setNoteCell:nil];
-//    [self removeAddFirstNoteView];
     [super viewDidUnload];
 }
 
@@ -340,7 +320,6 @@
     
     [[self navigationItem] setRightBarButtonItem:self.addButton animated:YES];
     [self.navigationItem setLeftBarButtonItem:self.optionsButton animated:YES];
-    //[self.navigationItem setTitleView:searchView];
 }
 
 //Переход к контроллеру опций
@@ -356,8 +335,6 @@
                       duration:1.0
                        options:UIViewAnimationOptionTransitionCurlUp
                     completion:nil];
-    
-//    [self performSelector:@selector(removeAddFirstNoteView) withObject:nil afterDelay:0.2];
     
     [self removeButtons];
     
@@ -379,15 +356,9 @@
     [nextC setNote:nil];
     [nextC setNLC:self];
 
-    [UIView transitionFromView:self.view
-                        toView:nextC.view
-                      duration:0.8
-                       options:UIViewAnimationOptionTransitionCurlUp
-                    completion:nil];
-    
     [self removeButtons];
     
-    [self.navigationController pushViewController:nextC animated:NO];
+    [self.navigationController pushViewController:nextC animated:YES];
 }
 
 -(void)deselectSwipedCells
@@ -399,59 +370,10 @@
     
     [[self navigationItem] setRightBarButtonItem:self.addButton animated:YES];
     [self.navigationItem setLeftBarButtonItem:self.optionsButton animated:YES];
-    //[self.navigationItem setTitleView:searchView];
     
     swipedCells = nil;
 }
 
-#pragma mark - "Add first note" view
-/*
--(void)setAddFirstNoteView
-{
-    if (([[fetchedResultsController fetchedObjects] count] == 0) && (canShowAddFirstNoteView))
-    {
-        canShowAddFirstNoteView = NO;
-        
-        CGRect viewRect = CGRectMake(self.view.frame.size.width - 320, 100, 320, 140);
-        addFirstNoteView.frame = viewRect;
-        viewRect.origin.y = 0;
-        
-        CGRect labelRect = CGRectMake(self.view.frame.size.width - 320, 155, 190, 30);
-        addFirstNoteLabel.frame = labelRect;
-        labelRect.origin.y = 55;
-        
-        [UIView animateWithDuration:0.4
-                              delay:0.1
-                            options: kCAMediaTimingFunctionEaseIn || UIViewAnimationOptionAutoreverse
-                         animations:^{
-                             
-                             [addFirstNoteView setAlpha:1.0];
-                             addFirstNoteView.frame = viewRect;
-                             [self.view bringSubviewToFront:addFirstNoteView];
-                         }
-                         completion:nil];
-        
-        [UIView animateWithDuration:0.4
-                              delay:0.15
-                            options: kCAMediaTimingFunctionEaseIn || UIViewAnimationOptionAutoreverse
-                         animations:^{
-                             
-                             addFirstNoteLabel.frame = labelRect;
-                             [addFirstNoteLabel setAlpha:1.0];
-                             [self.view bringSubviewToFront:addFirstNoteLabel];
-                         }
-                         completion:^(BOOL finished){
-                             canShowAddFirstNoteView = YES;
-                         }];
-    }
-}
-
--(void)removeAddFirstNoteView
-{
-    [addFirstNoteView setAlpha:0.0];
-    [addFirstNoteLabel setAlpha:0.0];
-}
-*/
 #pragma mark - Searching
 
 //Начало поиска
@@ -634,7 +556,6 @@
                 {
                     [self.navigationItem setLeftBarButtonItem:self.deselectButton animated:YES];
                     [self.navigationItem setRightBarButtonItem:self.deleteButton animated:YES];
-                    //[self.navigationItem setTitleView:nil];
                 }
                 
                 if (![swipedCells containsObject:indexPath])
@@ -669,7 +590,6 @@
         {
             [[self navigationItem] setRightBarButtonItem:self.addButton animated:YES];
             [self.navigationItem setLeftBarButtonItem:self.optionsButton animated:YES];
-            //[self.navigationItem setTitleView:searchView];
         }
     }
 }
@@ -762,14 +682,7 @@
                          [nextC setNLC:self];
                          
                          [self removeButtons];
-                         
-                         [UIView transitionFromView:self.view
-                                             toView:nextC.view
-                                           duration:0.8
-                                            options:UIViewAnimationOptionTransitionCurlUp
-                                         completion:nil];
-                         
-                         [self.navigationController pushViewController:nextC animated:NO];
+                         [self.navigationController pushViewController:nextC animated:YES];
                          
                      }];
 }
@@ -1145,10 +1058,7 @@
 		case NSFetchedResultsChangeInsert:
 			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             [self.tableView setSeparatorStyle:(UITableViewCellSeparatorStyleSingleLine)];
-            if ([[fetchedResultsController fetchedObjects] count] == 1)
-            {
-//                [self performSelector:@selector(removeAddFirstNoteView) withObject:nil afterDelay:0.2];
-            }
+
 			break;
 			
 		case NSFetchedResultsChangeDelete:
@@ -1156,11 +1066,6 @@
             if ([[fetchedResultsController fetchedObjects] count] == 0)
             {
                 [self.tableView setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
-                
-                if ([myPredicate length] == 0)
-                {
-//                    [self setAddFirstNoteView];
-                }
             }
 			break;
 			
@@ -1169,8 +1074,6 @@
             if ([[fetchedResultsController fetchedObjects] count] > 0)
             {
                 [self configureCell:(noteListCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-
-//                [self performSelector:@selector(removeAddFirstNoteView) withObject:nil afterDelay:0.2];
             }
 			break;
         }
@@ -1251,17 +1154,6 @@
     }
 
     [customAlertView setNeedsDisplay];
-    /*
-    CGRect rect = addFirstNoteView.frame;
-    
-    rect.origin.x = self.view.frame.size.width - 320;
-    addFirstNoteView.frame = rect;
-    
-    rect = addFirstNoteLabel.frame;
-    
-    rect.origin.x = self.view.frame.size.width - 320;
-    addFirstNoteLabel.frame = rect;
-     */
 }
 
 - (void)didReceiveMemoryWarning

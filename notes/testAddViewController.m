@@ -390,13 +390,7 @@
 
 -(void)goToNotesList
 {
-    [UIView transitionFromView:self.view
-                        toView:NLC.view
-                      duration:0.8
-                       options:UIViewAnimationOptionTransitionCurlDown
-                    completion:nil];
-    
-    [self.navigationController popToViewController:NLC animated:NO];
+    [self.navigationController popToViewController:NLC animated:YES];
 }
 
 -(void)clickLockButton:(id)sender
